@@ -35,14 +35,14 @@ const displayCurrentWeather = (city, weatherData) => {
     windElement.setAttribute("class", "card-text");
     humidityElement.setAttribute("class", "card-text");
 
-    heading.textContent = `${city} (${data})`;
+    heading.textContent = `${city} (${date})`;
     weatherIcon.setAttribute("src", iconUrl);
     weatherIcon.setAttribute("alt", iconDescription);
     heading.append(weatherIcon);
     temperatureElement.textContent = `Temperature: ${tempF} F`;
     windElement.textContent = `Wind: ${windMph} MPH`;
     humidityElement.textContent = `Humidity: ${humidity} %`;
-    cardBody.append(heading. temperatureElement, windElement, humidityElement);
+    cardBody.append(heading, temperatureElement, windElement, humidityElement);
 
     todayContainer.innerHTML = "";
     todayContainer.append(card);
@@ -79,7 +79,8 @@ const displayCurrentWeather = (city, weatherData) => {
         cardTitle.textContent = dayjs(forecastData.dt_txt).format("M/D/YYYY");
         weatherIcon.setAttribute("src", iconUrl);
         weatherIcon.setAttribute("alt", iconDescription);
-        temperatureElement.textContent = `wind: ${wind} MPH`;
+        temperatureElement.textcontent = `temp: ${temperature} F`
+        windElement.textContent = `wind: ${wind} MPH`;
         humidityElement.textContent = `Humidity: ${humidity} %`;
 
         forecastContainer.append(column);
@@ -90,7 +91,7 @@ const displayCurrentWeather = (city, weatherData) => {
 
 
     const displayForecast = (weatherData) => {
-        const startDate = dayjs().add(1, "day").startOf("day").uxix();
+        const startDate = dayjs().add(1, "day").startOf("day").unix();
         const endDate = dayjs().add(6, "day").startOf("day").unix();
 
         const headingColumn = document.createElement("div");
@@ -106,7 +107,7 @@ const displayCurrentWeather = (city, weatherData) => {
         console.log(endDate)
 
         for(let index = 0; index < weatherData.length; index++) {
-            if(weatherData[index].dt >= startDate && weatherData[index] < endDate) {
+            if(weatherData[index].dt >= startDate && weatherData[index].dt < endDate) {
                 
                 if(weatherData[index].dt_txt.slice(11,13) === "12"){
                     createForecastCard(weatherData[index]);
@@ -143,7 +144,7 @@ const createSearchHistory = () => {
         buttonElement.setAttribute("aria-controls", "today forecast");
         buttonElement.classList.add("history-button")
         buttonElement.setAttribute("data-search", searchHistoryForWeather[index]);
-        buttonElement.textcontent = searchHistoryForWeather[index];
+        buttonElement.textContent = searchHistoryForWeather[index];
         weatherHistoryContainer.append(buttonElement);
     }
 }

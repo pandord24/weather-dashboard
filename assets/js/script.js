@@ -22,3 +22,7 @@ function fetchWeather(city){
 
 
 document.querySelector("#searchbtn").addEventListener("click",handleSubmit)
+
+
+<!-- <input id="search"/>
+    <button id="searchbtn">Submit</button> -->

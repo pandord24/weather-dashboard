@@ -79,8 +79,8 @@ const displayCurrentWeather = (city, weatherData) => {
         cardTitle.textContent = dayjs(forecastData.dt_txt).format("M/D/YYYY");
         weatherIcon.setAttribute("src", iconUrl);
         weatherIcon.setAttribute("alt", iconDescription);
-        temperatureElement.textcontent = `temp: ${temperature} F`
-        windElement.textContent = `wind: ${wind} MPH`;
+        temperatureElement.textContent = `Temp: ${temperature} F`
+        windElement.textContent = `Wind: ${wind} MPH`;
         humidityElement.textContent = `Humidity: ${humidity} %`;
 
         forecastContainer.append(column);
